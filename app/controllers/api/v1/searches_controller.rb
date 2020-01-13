@@ -6,7 +6,9 @@ class Api::V1::SearchesController < ApplicationController
   
   def create
     search = Search.create(search_params)
-    render json: search, status: 200
+    scraper = AudibleScraper.new(searchTerm: search_params[:text])
+    books = scraper.scrape_audible_books
+    render json: search, include: [:books]
   end
 
   def destroy
