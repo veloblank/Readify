@@ -10,10 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_13_085906) do
+ActiveRecord::Schema.define(version: 2020_01_13_152222) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "audible_scrapers", force: :cascade do |t|
+    t.string "searchTerm"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "books", force: :cascade do |t|
+    t.string "title"
+    t.string "author"
+    t.string "img_src"
+    t.string "length_text_string"
+    t.integer "length_text_mins"
+    t.integer "search_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "searches", force: :cascade do |t|
     t.string "text"
