@@ -1,2 +1,0 @@
-class AudibleScrapersController < ApplicationController
-end
