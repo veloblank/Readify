@@ -1,6 +1,8 @@
 class AudibleScraper < ApplicationRecord
   require 'open-uri'
 
+  #TODO: dry up this code!! There is a WIP stash that helps, but ultimately broke scraping.
+  
   def scrape_audible_books
     doc = Nokogiri::HTML(open("https://www.audible.com/search?keywords=&title="+"#{self.searchTerm.split(' ').join('+')}"))
     bookHTML = doc.css(".productListItem")
